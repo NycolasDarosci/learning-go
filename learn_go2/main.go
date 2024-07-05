@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"example.go/files/data"
 	fu "example.go/files/fileUtils"
 	u "example.go/files/structs"
 )
@@ -12,6 +13,12 @@ import (
 type user = u.User
 
 func main() {
+
+	readWrite()
+	structs()
+}
+
+func readWrite() {
 	// reading a file
 	dir, _ := os.Getwd() // get the rooted path name corresponding to the current directory
 
@@ -20,26 +27,26 @@ func main() {
 
 	// error desing pattern
 	if err == nil {
-		fmt.Println(content)
-
-		//data := fmt.Sprintf("Original: %v \nAdd two sentences: %v%v", content, content, content)
-		//err := fu.WriteToFile(filePath, data)
-		//if err != nil {
-		//	panic(err)
-		//}
+		data := fmt.Sprintf("Original: %v \nAdd two sentences: %v%v", content, content, content)
+		err := fu.WriteToFile(filePath, data)
+		if err != nil {
+			panic(err)
+		}
 	} else {
 		panic(err)
 	}
 
+	// type alias
 	type distance float32
 	var v int = 32
-
 	a := distance(v)
-
 	fmt.Println(a)
+}
+
+func structs() {
+	// Structs..
 
 	u2 := user{ // does not need to add the property
-		Id:          1,
 		Name:        "Carlos",
 		PhoneNumber: "9956432345",
 	}
@@ -57,6 +64,38 @@ func main() {
 		),
 	)
 
-	fmt.Println(u.User.PrintConstructor(u2))
-	fmt.Println(john.PrintConstructor())
+	car := u.NewCar(
+		"Volkswagen",
+		"Alexandro",
+		u.NewAddress(
+			456,
+			"Calendar Street",
+			"St Joaquim",
+			"Los Angeles",
+			"California",
+			"USA",
+		),
+	)
+
+	// method String()
+	// the standard output for string
+	fmt.Printf("%v\n", u2)
+	fmt.Printf("%v\n", john)
+
+	// Car does not have String()
+	// this will not print the name of the car
+	// but will still print the other types, the embbeded types
+	// so you are embbeding those methods from the types you embbeded too
+	fmt.Printf("%v\n", car)
+
+	// both User (john) and Car (car)
+	// are implicit implemented the interface Signable
+	var signables [2]data.Signable
+	signables[0] = john
+	signables[1] = car
+
+	for _, sign := range signables {
+		fmt.Printf("sign: %v", sign)
+		fmt.Printf(" is sign? %v\n", sign.SignUp())
+	}
 }

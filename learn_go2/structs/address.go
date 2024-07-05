@@ -3,7 +3,7 @@ package structs
 import "fmt"
 
 type Address struct {
-	Id           int
+	id           int
 	Number       int32
 	Street       string
 	Neighborhood string
@@ -32,9 +32,9 @@ func NewAddress(
 	}
 }
 
-func (a Address) PrintConstructor() string {
+func (a Address) String() string {
 	return fmt.Sprintf("id: %d, number: %v, street: %v, neighborhood: %v, city: %v, state: %v, country: %v",
-		a.Id,
+		a.id,
 		a.Number,
 		a.Street,
 		a.Neighborhood,

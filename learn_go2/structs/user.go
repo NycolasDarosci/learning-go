@@ -3,7 +3,7 @@ package structs
 import "fmt"
 
 type User struct {
-	Id          int
+	id          int
 	Name        string
 	PhoneNumber string
 	Address     Address
@@ -18,6 +18,14 @@ func NewUser(name string, phoneNumber string, address Address) User {
 // Structs with methods
 // Structs are functions attached to a type declared outside of the structure
 // method of the "class"
-func (u User) PrintConstructor() string {
-	return fmt.Sprintf("{id: %d, name: %v, phoneNumber: %v, address: {%v}}", u.Id, u.Name, u.PhoneNumber, u.Address.PrintConstructor())
+// this method looks like "toString()"
+func (u User) String() string {
+	return fmt.Sprintf("{id: %d, name: %v, phoneNumber: %v, address: {%v}}", u.id, u.Name, u.PhoneNumber, u.Address.String())
+}
+
+//implicit implementation of the Signable interface
+// SignUp() bool
+// just the assignature of the method
+func (c User) SignUp() bool {
+	return true
 }

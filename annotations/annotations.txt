@@ -323,3 +323,48 @@ Complex types for definitions
         - emulate polimorsphism
         - implicit implementation
         - can embed interfaces in other interfaces
+
+GoRoutines
+
+    go way of using threads
+    invoke any function with a go prefix
+        go func whatever()
+
+    can communicate through channels, an special
+    type of variable
+
+    A channel contains a value of any kind
+
+    A routine can define a value for a channel
+    and other routine can wait for that value
+
+    Channels can buffered or not
+
+    Using Channels:
+    
+    Ex 1:
+        var m1 chan string
+
+        m2 := make(chan string)
+
+        m2 <- "hello"
+
+        messagem := <- m2
+
+    Ex 2 (buffer channel):
+        // 2 - how many of those values you wanna send over the channel
+        logs := make(chan string, 2)
+        // sending two messages
+        logs <- "hello"
+        logs <- "world"
+        fmt.Println(<-messages)
+        fmt.Println(<-messages)
+
+    Channel has two goals:
+        
+        1. send and receive data between GoRoutines
+        2. use it for one routine to wait for another routine
+            it's kind of an event listener between goroutines
+
+    TO AVOID DEADLOCKS:
+        close the channels before ending the program with close(chan)
