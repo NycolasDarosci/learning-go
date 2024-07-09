@@ -340,7 +340,7 @@ GoRoutines
 
     Channels can buffered or not
 
-  Using Channels:
+    Using Channels:
     
     Ex 1:
         var m1 chan string
@@ -360,7 +360,7 @@ GoRoutines
         fmt.Println(<-messages)
         fmt.Println(<-messages)
 
-    __Channel has two goals__:
+    Channel has two goals:
         
         1. send and receive data between GoRoutines
         2. use it for one routine to wait for another routine
@@ -368,3 +368,51 @@ GoRoutines
 
     TO AVOID DEADLOCKS:
         close the channels before ending the program with close(chan)
+
+closures functions 
+    nested function that allows us to access variables of the outer function even after the outer function is closed.
+
+    package main
+    import "fmt"
+
+    // outer function
+    func greet() func() string {
+
+        // variable defined outside the inner function
+        name := "John"
+        
+        // return a nested anonymous function
+        return func() string {
+            name = "Hi " + name
+            return name
+        }
+
+    }
+
+    func main() {
+
+        // call the outer function
+        message := greet()
+
+        // call the inner function
+        fmt.Println(message())
+    }
+
+    Output: Hi John
+
+
+Testing
+
+    - A test is a file with suffix _test.go
+    - Put the file in the same folder in your package
+    - define functions with prefix Test and with an special
+        signature receiving a *testing.T argument
+    - The function inside calls methods of T
+    - you can create subtests as goroutines
+    - can use CLI with go test
+    - TableDrivenTest Design Pattern
+    - Fuzzing
+        Automated testing that manipulates inputs to find bugs.
+        Go fuzzing user coverage guidance to find failures and is valuable
+        in detecting security exploits and vulnetabilities
+     
