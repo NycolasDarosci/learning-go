@@ -47,7 +47,8 @@ func main() {
 	fmt.Println("Sum: ", g)
 
 	// pointer
-	// make a change to the reference of the variable
+	// make a change to the reference of the variable =
+	// change the content of the variable
 	i := 6
 	fmt.Println(i)
 	io.Increment(&i)
