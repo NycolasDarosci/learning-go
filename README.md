@@ -1,101 +1,98 @@
-- efficient compiling (not take minutes to compile a code when you want to test)
-- efficient execution
-- easy to code
 
-- strong, static type system (everything has a type)
-- C inspired syntax
-- compiled (we need to compile the code to execute)
-- multi paradigm (object oriented, struct programming, imperative programming. It all up to you)
-- garbage collected (process that deletes data that not using anymore. No one is pointing at memory space, so it's deleted)
-- creates a single binary compilation (when compile, creates one file. One executable output for code)
-- new versions will be always fully backwards compatible(new version is compatible with the previous versions..).
+<h1 align="center"> Go Fundamentals </h1>
 
+Repository with purpose on documentation my personal study on go language.
 
+- Efficient compiling (not take minutes to compile a code when you want to test), efficient execution and easy to code;
+- Strong, static type system (everything has a type);
+- C inspired syntax;
+- compiled (we need to compile the code to execute);
+- multi paradigm (object oriented, struct programming, imperative programming. It all up to you);
+- garbage collected (process that deletes data that not using anymore. No one is pointing at memory space, so it's deleted);
+- creates a single binary compilation (when compile, - creates one file. One executable output for code);
+- new versions will be always fully backwards compatible(new version is compatible with the previous versions..);
 - every file must be within a package(folder)
 - the project must contains an entry point, where the code will init and run (package main and function main)
-
-
 - it can generate executable binary files for different platforms and operating systems
     - it can compile to WebAssembly (WASM, is ability of the web platform, like browsers, to execute native code that can be written from differents languages)
         Ex: games, criptocurrencies, Artificial inteligence
     - it can transpile to frontend javascript (GopherJS)
 - multi platform (creating app for a platform, need to pick both DOS and the architecture)
 
-- Go (Golang) GOOS and GOARCH https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63
+- [Go (Golang) GOOS and GOARCH](https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63)
 
-- Common use cases
-    - Web services
-    - Web applications
-    - DevOps
-    - Desktop UI
-    - Machine Learning
+  - Common use cases:
+     - Web services
+     - Web applications
+     - DevOps
+     - Desktop UI
+     - Machine Learning
     ...
 
 
-Language types
+## Language types
 
-    Interpreted Languages --> Source Code (javascript, python..)
+**Interpreted Languages** --> Source Code (javascript, python..)
 
-    Intermediate Compiled Languages --> Bytecode (Java, C#)
+**Intermediate Compiled Languages** --> Bytecode (Java, C#)
 
-    Compiled languages --> Machine Code (code execute directly in one CPU)
-
-
-syntax
-
-    Code blocks in {}
-    No styling freedom
-    does not need semi-colon (;) unless you need. To separate sentences
-        Ex: print("hello"); print("another print in the same line")
-    Case sensitive language
-    Strongly typed
-    No object oriented
-
-Rules
-
-    One file act as the entry point with a main function
-
-    folder is a package (pasta é um pacote)
-
-    within a file
-        Variables
-        functions
-        Type declarations
-        Methods declarations
-
-Modules and CLI
-
-    Module is a project! is a group of packages
-    it contains go.mod file with configuration and metadata
-
-    CLI manipulates the module
-        go mod init
-        go build
-        go run 
-        go test
-        go get
+**Compiled languages** --> Machine Code (code execute   directly in one CPU)
 
 
-Workspaces and CLI
+## Syntax
 
-    is a new kind of super module app
+   - Code blocks in ```{ }```
+   - No styling freedom
+   - does not need semi-colon (;) unless you need. To    separate sentences:
+    print("hello"); print("another print in the same line")
+- Case sensitive language
+- Strongly typed
+- No object oriented
 
-    it contains a go.work file with configuration and metadata including which module to use
+## Rules
 
-    CLI manipulates the workspaces
+   - One file act as the entry point with a main function
 
-        go work init
+   - folder is a package (pasta é um pacote)
+
+   Within a file:
+
+    Variables
+    functions
+    Type declarations
+    Methods declarations
+
+## Modules and CLI
+
+   - Module is a project! is a group of packages
+   - it contains go.mod file with configuration and metadata
+
+   CLI manipulates the module:
+   
+    go mod init
+    go build
+    go run 
+    go test
+    go get
+
+
+## Workspaces and CLI
+
+   - is a new kind of super module app
+   - it contains a go.work file with configuration and    metadata including which module to use
+
+   CLI manipulates the workspaces: ```go work init```
 
     workspaces--
         modules--
             packages--
+    
 
+   - Data types goes after identifier
+   - Variables have nil by default
+   - Constants can be only bool, string or numbers
 
-Data types goes after identifier
-Variables have nil by default
-Constants can be only bool, string or numbers
-
-Immutable variable x constant
+## Immutable variable x constant
 
     Immutable variable is a varible, so it is an a space alocate in memory
     immutable was set and no one can not change the value
@@ -104,17 +101,14 @@ Immutable variable x constant
     "copy and paste"
     it's not in a memoty, it is a fix value
 
-variable with initialization
-    var name string
-    name = "John"
+   - variable with initialization: ```var name string name = "John"```
 
-or
+   or
 
-initialization shortcut 
-    otherName := "Mike"
+   - initialization shortcut: ```otherName := "Mike"```
 
 
-Types
+## Types
     string
     numbers values: int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64
         uint - unsigned int - only positive numbers
@@ -158,7 +152,7 @@ Types
 
         Generics
 
-Visibility
+## Visibility
     variables, constants, functions..
 
     if it's camelCase = private to the package
@@ -169,13 +163,13 @@ Visibility
 
         func Exported() {}
 
-Variables and lambda functions can be:
+## Variables and lambda functions can be:
 
     - Module Scoped
     - Function Scoped
     - Block Scoped
 
-Functions
+## Functions
     
     - It can receive arguments
     - arguments can have default values
@@ -200,7 +194,7 @@ Functions
             increment(&i)
         }
 
-Control structeres
+## Control structeres
 
     if - else
 
@@ -244,7 +238,7 @@ Control structeres
         }
 
     for
-
+        ```
         for i:=0; i<len(collection); i++ {
         }
 
@@ -269,14 +263,13 @@ Control structeres
         for {
             // infinite loop
         }
+        ```
 
+## Compiler
 
-compiler
+   - does not matter for the compiler the name of the go files what matters is the name of the package.
 
-    does not matter for the compiler the name of the go files
-    what matters is the name of the package
-
-Conversion to string
+## Conversion to string
 
     use fmt.Sprintf to make a custom string, it will return a string
     like when you want to send a string customized
@@ -286,7 +279,7 @@ Conversion to string
     fmt.Sprintf("Hello %v how are you doing this %v?", name, day)
 
 
-Type definition
+## Type definition
 
     // type alias
     type definition = float32
@@ -310,7 +303,7 @@ Type definition
     }
 
 
-Complex types for definitions
+## Complex types for definitions
 
     Structures
         - kind replace the class idea
@@ -324,7 +317,7 @@ Complex types for definitions
         - implicit implementation
         - can embed interfaces in other interfaces
 
-GoRoutines
+## GoRoutines
 
     go way of using threads
     invoke any function with a go prefix
@@ -369,7 +362,7 @@ GoRoutines
     TO AVOID DEADLOCKS:
         close the channels before ending the program with close(chan)
 
-closures functions 
+## Closures functions 
     nested function that allows us to access variables of the outer function even after the outer function is closed.
 
     package main
@@ -401,7 +394,7 @@ closures functions
     Output: Hi John
 
 
-Testing
+## Testing
 
     - A test is a file with suffix _test.go
     - Put the file in the same folder in your package
@@ -416,7 +409,7 @@ Testing
         Go fuzzing user coverage guidance to find failures and is valuable
         in detecting security exploits and vulnetabilities
 
-Go Templates
+## Go Templates
     
     - use to create server-side rendering
     - HTML file with go code
@@ -428,7 +421,7 @@ Go Templates
     - range for loops
     - call functions
      
-Compiling
+## Compiling
 
     - Compiling the project
         go build .
@@ -443,7 +436,7 @@ Compiling
     - Compile and install
         go install .
 
-Packaging
+## Packaging
 
     - Go produces a binary
     - It does not provide any packaging solution
@@ -453,3 +446,4 @@ Packaging
             - installers for Windows
             - DMG package for MacOs
             - RPM or DEB packages for Linux
+
