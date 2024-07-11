@@ -1,5 +1,3 @@
-<h1 align="center">ANNOTATIONS GO</h1>
-
 - efficient compiling (not take minutes to compile a code when you want to test)
 - efficient execution
 - easy to code
@@ -417,4 +415,41 @@ Testing
         Automated testing that manipulates inputs to find bugs.
         Go fuzzing user coverage guidance to find failures and is valuable
         in detecting security exploits and vulnetabilities
+
+Go Templates
+    
+    - use to create server-side rendering
+    - HTML file with go code
+    - it is in the html/package package
+    - can include expressions in {{}}
+    - Trimming spaces available
+    - actions and pipelines
+    - if else conditions
+    - range for loops
+    - call functions
      
+Compiling
+
+    - Compiling the project
+        go build .
+
+    - Compiling in one specific output folder
+        go build . -o build/
+
+    - Compiling for other platforms and OSs
+        env GOOS=target-OS
+        GOARCH=target-architecture go build .
+
+    - Compile and install
+        go install .
+
+Packaging
+
+    - Go produces a binary
+    - It does not provide any packaging solution
+    - if want to embed assets (like .png .js ..) for an
+        app, it need to use third-party or OSs tools, such as:
+
+            - installers for Windows
+            - DMG package for MacOs
+            - RPM or DEB packages for Linux
